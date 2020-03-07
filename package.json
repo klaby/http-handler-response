@@ -1,11 +1,18 @@
 {
-  "name": "http-error-handler",
-  "version": "0.2.0",
+  "name": "http-handler-response",
+  "version": "0.3.0",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "author": "hiukky <developermarsh@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiukky/http-handler-response.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hiukky/http-handler-response/issues"
+  },
   "scripts": {
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"

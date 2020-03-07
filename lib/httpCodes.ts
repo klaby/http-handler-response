@@ -65,7 +65,7 @@ export const CLIENT_ERROR = {
   '499': 'Client Closed Request',
 }
 
-// 4xx
+// 5xx
 export const SERVER_ERROR = {
   '500': 'Internal Server Error',
   '501': 'Not Implemented',
