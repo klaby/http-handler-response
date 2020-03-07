@@ -19,7 +19,7 @@
 
 ## Using
 
-The http-handler-response provides two main functions. `makeError` and `makeResponse`.
+The http-handler-response provides two main functions. `makeErr` and `makeRes`.
 
 #### Parameters
 
@@ -29,12 +29,12 @@ The http-handler-response provides two main functions. `makeError` and `makeResp
   data: array | object
 ```
 
-#### makeError
+#### makeErr
 
-The `makeError` function is the function responsible for formulating your return messages in unsuccessful requisitions.
+The `makeErr` function is the function responsible for formulating your return messages in unsuccessful requisitions.
 
 ```js
-import { makeError } from 'http-handler-response'
+import { makeErr } from 'http-handler-response'
 import User from 'models/User'
 
 class UserController {
@@ -42,7 +42,7 @@ class UserController {
     try {
       const user = await User.find(1)
 
-      if (!user) makeError({ code: 404, message: 'User not found' })
+      if (!user) makeErr({ code: 404, message: 'User not found' })
 
       return user
     } catch (error) {
@@ -52,12 +52,12 @@ class UserController {
 }
 ```
 
-#### makeResponse
+#### makeRes
 
-The `makeResponse` function is the function responsible for formulating your return messages in successful requisitions.
+The `makeRes` function is the function responsible for formulating your return messages in successful requisitions.
 
 ```js
-import { makeResponse } from 'http-handler-response'
+import { makeRes } from 'http-handler-response'
 import User from 'models/User'
 
 class UserController {
@@ -71,7 +71,7 @@ class UserController {
       await user.save()
 
       return response.status(201).send(
-        makeResponse({
+        makeRes({
           code: 201,
           message: 'Successful registered user.',
           data: user,
