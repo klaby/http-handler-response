@@ -5,47 +5,38 @@ import {
   INFORMATIONAL,
   SUCCESS,
   REDIRECTION,
-} from './httpStatus'
+} from './httpCodes'
 
 export interface IMakeResponse {
-  status: TInformational | TSuccess | TRedirection
+  code: TInformational | TSuccess | TRedirection
+  message?: string
+  data?: [] | object
 }
 
-interface IResponseModel {
+interface IResponse {
   title: string
   status: number
   message?: string
+  data?: [] | object
 }
 
-const makeResponseModel = ({ status }: IMakeResponse): IResponseModel => {
-  var response: IResponseModel = {
-    title: SUCCESS[200],
-    status: 200,
-  }
-  var _status = Number(status)
+const makeResponseModel = ({ code }: IMakeResponse): IResponse => {
+  var _title = SUCCESS[200]
+  var _code = Number(code)
 
-  if (_status >= 100 && _status < 200) {
-    response = {
-      title: INFORMATIONAL[status as TInformational],
-      status: _status,
-    }
-  } else if (_status >= 200 && _status < 300) {
-    response = {
-      title: SUCCESS[status as TSuccess],
-      status: _status,
-    }
+  if (_code >= 100 && _code < 200) {
+    _title = INFORMATIONAL[code as TInformational]
+  } else if (_code >= 200 && _code < 300) {
+    _title = SUCCESS[code as TSuccess]
   } else {
-    response = {
-      title: REDIRECTION[status as TRedirection],
-      status: _status,
-    }
+    _title = REDIRECTION[code as TRedirection]
   }
 
-  return response
+  return { title: _title, status: _code }
 }
 
-const makeResponse = ({ status }: IMakeResponse): IResponseModel => {
-  return makeResponseModel({ status })
+const makeResponse = ({ code, message, data }: IMakeResponse): IResponse => {
+  return Object.assign(makeResponseModel({ code }), { message, data })
 }
 
 export default makeResponse

@@ -3,36 +3,36 @@ import {
   TServerError,
   CLIENT_ERROR,
   SERVER_ERROR,
-} from './httpStatus'
+} from './httpCodes'
 
 export interface IMakeError {
-  status: TClientError | TServerError
+  code: TClientError | TServerError
+  message?: string
+  data?: [] | object
 }
 
-interface IErrorModel {
+interface IError {
   title: string
   status: number
+  message?: string
+  data?: [] | object
 }
 
-const makeError = ({ status }: IMakeError): void => {
-  var error: IErrorModel = {
-    title: SERVER_ERROR[500],
-    status: 500,
-  }
+const makeErrorModel = ({ code }: IMakeError): IError => {
+  var _code = Number(code)
+  var _title = SERVER_ERROR[500]
 
-  if (Number(status) >= 400 && Number(status) < 500) {
-    error = {
-      title: CLIENT_ERROR[status as TClientError],
-      status: Number(status),
-    }
+  if (_code >= 400 && _code < 500) {
+    _title = CLIENT_ERROR[code as TClientError]
   } else {
-    error = {
-      title: SERVER_ERROR[status as TServerError],
-      status: 500,
-    }
+    _title = SERVER_ERROR[code as TServerError]
   }
 
-  throw error
+  return { title: _title, status: _code }
+}
+
+const makeError = ({ code, message, data }: IMakeError): void => {
+  throw Object.assign(makeErrorModel({ code }), { message, data })
 }
 
 export default makeError
