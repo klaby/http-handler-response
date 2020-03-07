@@ -1,5 +1,5 @@
 {
-  "name": "http-error-handler",
+  "name": "http-handler-response",
   "version": "0.2.0",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
