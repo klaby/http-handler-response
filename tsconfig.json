@@ -15,10 +15,10 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "moduleResolution": "node",
-    "baseUrl": "src",
+    "baseUrl": "lib",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
+  "include": ["lib", "index.ts"],
   "exclude": ["node_modules", "dist"]
 }
