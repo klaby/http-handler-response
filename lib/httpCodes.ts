@@ -80,9 +80,3 @@ export const SERVER_ERROR = {
   '511': 'Network Authentication Required',
   '599': 'Network Connect Timeout Error',
 }
-
-export type TInformational = keyof typeof INFORMATIONAL
-export type TSuccess = keyof typeof SUCCESS
-export type TRedirection = keyof typeof REDIRECTION
-export type TClientError = keyof typeof CLIENT_ERROR
-export type TServerError = keyof typeof SERVER_ERROR
