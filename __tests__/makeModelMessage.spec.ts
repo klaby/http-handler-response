@@ -6,4 +6,13 @@ describe('Make message model', () => {
 
     expect(model).toEqual({ status: 500, title: 'Internal Server Error' })
   })
+
+  it('Must mount a custom headline for a 500 error.', () => {
+    const model = makeModelMessage({
+      code: '500',
+      title: 'Server found a problem',
+    })
+
+    expect(model).toEqual({ status: 500, title: 'Server found a problem' })
+  })
 })
