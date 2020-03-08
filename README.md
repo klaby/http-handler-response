@@ -21,17 +21,21 @@
 
 The http-handler-response provides two main functions. `makeErr` and `makeRes`.
 
-#### Parameters
-
-```js
-  code: number,
-  message: string,
-  data: array | object
-```
-
 #### makeErr
 
-The `makeErr` function is the function responsible for formulating your return messages in unsuccessful requisitions.
+The `makeErr` function is the function responsible for formulating your return messages in unsuccessful requests. It follows the [RFC-7807](https://tools.ietf.org/html/rfc7807) standard.
+
+##### Parameters
+
+```js
+  code: number
+  type: string,
+  title: string,
+  detail: string,
+  instance: string,
+```
+
+##### Example
 
 ```js
 import { makeErr } from 'http-handler-response'
@@ -42,7 +46,13 @@ class UserController {
     try {
       const user = await User.find(1)
 
-      if (!user) makeErr({ code: 404, message: 'User not found' })
+      if (!user)
+        makeErr({
+          code: 404,
+          detail: 'The user informed is not registered.',
+          instance: '/user/1',
+          type: 'https://example.com/docs/users',
+        })
 
       return user
     } catch (error) {
@@ -52,9 +62,33 @@ class UserController {
 }
 ```
 
+##### Response
+
+```js
+{
+  status: 404,
+  title: 'Not found',
+  detail: 'The user informed is not registered.',
+  instance: '/user/1',
+  type: 'https://example.com/docs/users',
+}
+
+```
+
 #### makeRes
 
 The `makeRes` function is the function responsible for formulating your return messages in successful requisitions.
+
+##### Parameters
+
+```js
+  code: number,
+  message: string,
+  title: string
+  data: array | object
+```
+
+##### Example
 
 ```js
 import { makeRes } from 'http-handler-response'
@@ -84,9 +118,7 @@ class UserController {
 }
 ```
 
-## Response
-
-The answer model is quite simple. It contains the following properties, `title`, `status`, `message` and `data`.
+##### Response
 
 ```js
 {
