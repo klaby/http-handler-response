@@ -4,21 +4,21 @@ import {
   REDIRECTION,
   CLIENT_ERROR,
   SERVER_ERROR,
-} from './httpCodes'
+} from '../utils/httpCodes'
 
-export interface IMakeMessage {
+export interface ICreateModelMessage {
   code: TInformational | TSuccess | TRedirection | TClientError | TServerError
   title?: string
 }
 
-export interface IMakeRes {
+export interface ICreateResponse {
   code: TInformational | TSuccess | TRedirection
   message?: string
   title?: string
   data?: [] | object
 }
 
-export interface IMakeErr {
+export interface ICreateError {
   code: TClientError | TServerError
   detail: string
   title?: string

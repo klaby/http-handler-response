@@ -1,8 +1,8 @@
-import { IMakeErr, IError } from './types'
-import makeModelMessage from './makeModelMessage'
+import { ICreateError, IError } from '../types/builders'
+import makeModelMessage from './createModelMessage'
 
 /**
- * @function makeErr
+ * @function createError
  *
  * Creates an error response following the RFC 7807 pattern.
  *
@@ -12,13 +12,13 @@ import makeModelMessage from './makeModelMessage'
  * @param instance - URI exclusive for or specific error
  * @param title - Short and descriptive information
  */
-const makeErr = ({
+const createError = ({
   code,
   type = 'about:blank',
   title,
   detail,
   instance,
-}: IMakeErr): IError =>
+}: ICreateError): IError =>
   Object.assign(makeModelMessage({ code, title }), { type, detail, instance })
 
-export default makeErr
+export default createError
