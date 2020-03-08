@@ -2,7 +2,7 @@ node_modules
 tests
 .eslintrc.json
 commitlint.config.js
-tsconfig.json
+jest.config.js
 rollup.config.js
 .prettierrc
 .prettierignore
