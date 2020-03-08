@@ -19,13 +19,13 @@
 
 ## Using
 
-The http-handler-response provides two main functions. `makeErr` and `makeRes`.
+The http-handler-response provides two main functions. `createError` and `createResponse`.
 
-#### makeErr
+### createError
 
-The `makeErr` function is the function responsible for formulating your return messages in unsuccessful requests. It follows the [RFC-7807](https://tools.ietf.org/html/rfc7807) standard.
+The `createError` function is the function responsible for formulating your return messages in unsuccessful requests. It follows the [RFC-7807](https://tools.ietf.org/html/rfc7807) standard.
 
-##### Parameters
+#### Parameters
 
 ```js
   code: number
@@ -35,10 +35,10 @@ The `makeErr` function is the function responsible for formulating your return m
   instance: string,
 ```
 
-##### Example
+#### Example
 
 ```js
-import { makeErr } from 'http-handler-response'
+import { createError, handlerErrorAdonis } from 'http-handler-response'
 import User from 'models/User'
 
 class UserController {
@@ -47,7 +47,7 @@ class UserController {
       const user = await User.find(1)
 
       if (!user)
-        makeErr({
+        createError({
           code: 404,
           detail: 'The user informed is not registered.',
           instance: '/user/1',
@@ -56,13 +56,13 @@ class UserController {
 
       return user
     } catch (error) {
-      response.status(error.status).send(error)
+      handlerErrorAdonis({ response, error })
     }
   }
 }
 ```
 
-##### Response
+#### Response
 
 ```js
 {
@@ -75,11 +75,11 @@ class UserController {
 
 ```
 
-#### makeRes
+### createResponse
 
-The `makeRes` function is the function responsible for formulating your return messages in successful requisitions.
+The `createResponse` function is the function responsible for formulating your return messages in successful requisitions.
 
-##### Parameters
+#### Parameters
 
 ```js
   code: number,
@@ -88,10 +88,10 @@ The `makeRes` function is the function responsible for formulating your return m
   data: array | object
 ```
 
-##### Example
+#### Example
 
 ```js
-import { makeRes } from 'http-handler-response'
+import { createResponse, handlerErrorAdonis } from 'http-handler-response'
 import User from 'models/User'
 
 class UserController {
@@ -105,20 +105,20 @@ class UserController {
       await user.save()
 
       return response.status(201).send(
-        makeRes({
+        createResponse({
           code: 201,
           message: 'Successful registered user.',
           data: user,
         }),
       )
     } catch (error) {
-      response.status(error.status).send(error)
+      handlerErrorAdonis({ response, error })
     }
   }
 }
 ```
 
-##### Response
+#### Response
 
 ```js
 {
@@ -132,4 +132,50 @@ class UserController {
   }
 }
 
+```
+
+### handlerError
+
+The http-handler-response has custom handlers for handling errors for various web frameworks such as `AdonisJs`, `Express` and `KoaJs`. The functions have a default prefix `handlerError` followed by the name of the framework . Ex: `handlerErrorExpress`.
+
+#### Parameters
+
+Some parameters vary in nomenclature, depending on the framework. The idea is to avoid desessentiary statements like `{ response: res }` to simply `{ res }`.
+
+##### AdonisJs
+
+```js
+  response: Response,
+  error: Error,
+```
+
+##### Express
+
+```js
+  res: Response,
+  error: Error,
+```
+
+##### KoaJs
+
+```js
+  ctx: Context,
+  error: Error,
+```
+
+#### Example
+
+```js
+import { handlerErrorAdonis } from 'http-handler-response'
+import User from 'models/User'
+
+class UserController {
+  async store(request, response) {
+    try {
+      // Your code..
+    } catch (error) {
+      handlerErrorAdonis({ response, error })
+    }
+  }
+}
 ```
