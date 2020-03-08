@@ -20,21 +20,25 @@ import {
  * Assemble the default message header.
  *
  * @param code - HTTP status code 1xx to 5xx
+ * @param title - Short and descriptive information
  */
-const makeModelMessage = ({ code }: IMakeMessage) => {
+const makeModelMessage = ({ code, title }: IMakeMessage) => {
   const _code = Number(code)
+  var _title
 
   if (_code >= 100 && _code < 200) {
-    return { title: INFORMATIONAL[code as TInformational], status: _code }
+    _title = title ?? INFORMATIONAL[code as TInformational]
   } else if (_code >= 200 && _code < 300) {
-    return { title: SUCCESS[code as TSuccess], status: _code }
+    _title = title ?? SUCCESS[code as TSuccess]
   } else if (_code >= 300 && _code < 400) {
-    return { title: REDIRECTION[code as TRedirection], status: _code }
+    _title = title ?? REDIRECTION[code as TRedirection]
   } else if (_code >= 400 && _code < 500) {
-    return { title: CLIENT_ERROR[code as TClientError], status: _code }
+    _title = title ?? CLIENT_ERROR[code as TClientError]
   } else {
-    return { title: SERVER_ERROR[code as TServerError], status: _code }
+    _title = title ?? SERVER_ERROR[code as TServerError]
   }
+
+  return { title: _title, status: _code }
 }
 
 export default makeModelMessage

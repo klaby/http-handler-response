@@ -10,14 +10,15 @@ import makeModelMessage from './makeModelMessage'
  * @param type - URL for a document describing the error condition
  * @param detail - Legible error description
  * @param instance - URI exclusive for or specific error
+ * @param title - Short and descriptive information
  */
 const makeErr = ({
   code,
   type = 'about:blank',
+  title,
   detail,
   instance,
-}: IMakeErr): IError => {
-  return Object.assign(makeModelMessage({ code }), { type, detail, instance })
-}
+}: IMakeErr): IError =>
+  Object.assign(makeModelMessage({ code, title }), { type, detail, instance })
 
 export default makeErr

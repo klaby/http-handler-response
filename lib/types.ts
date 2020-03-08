@@ -8,17 +8,20 @@ import {
 
 export interface IMakeMessage {
   code: TInformational | TSuccess | TRedirection | TClientError | TServerError
+  title?: string
 }
 
 export interface IMakeRes {
   code: TInformational | TSuccess | TRedirection
   message?: string
+  title?: string
   data?: [] | object
 }
 
 export interface IMakeErr {
   code: TClientError | TServerError
   detail: string
+  title?: string
   type?: string
   instance?: string
 }

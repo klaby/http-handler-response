@@ -21,4 +21,26 @@ describe('Make response', () => {
       },
     })
   })
+
+  it('You must assemble a response with a personalized title', () => {
+    const response = makeRes({
+      code: '201',
+      title: 'Success',
+      message: 'Successfully registered',
+      data: {
+        id: 1,
+        name: 'Foo',
+      },
+    })
+
+    expect(response).toEqual({
+      status: 201,
+      title: 'Success',
+      message: 'Successfully registered',
+      data: {
+        id: 1,
+        name: 'Foo',
+      },
+    })
+  })
 })

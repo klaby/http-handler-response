@@ -9,9 +9,9 @@ import makeModelMessage from './makeModelMessage'
  * @param code - HTTP status code 1xx to 3xx
  * @param message - Legible action response
  * @param data - Back Data
+ * @param title - Short and descriptive information
  */
-const makeRes = ({ code, data, message }: IMakeRes): IResponse => {
-  return Object.assign(makeModelMessage({ code }), { data, message })
-}
+const makeRes = ({ code, data, message, title }: IMakeRes): IResponse =>
+  Object.assign(makeModelMessage({ code, title }), { data, message })
 
 export default makeRes
