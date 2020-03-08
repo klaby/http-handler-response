@@ -4,7 +4,7 @@ import {
   REDIRECTION,
   CLIENT_ERROR,
   SERVER_ERROR,
-} from './httpCodes'
+} from '../utils/httpCodes'
 
 export interface IMakeMessage {
   code: TInformational | TSuccess | TRedirection | TClientError | TServerError

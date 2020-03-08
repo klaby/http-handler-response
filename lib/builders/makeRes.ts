@@ -1,4 +1,4 @@
-import { IMakeRes, IResponse } from './types'
+import { IMakeRes, IResponse } from '../types/makeResponse'
 import makeModelMessage from './makeModelMessage'
 
 /**

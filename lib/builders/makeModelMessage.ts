@@ -4,7 +4,7 @@ import {
   REDIRECTION,
   CLIENT_ERROR,
   SERVER_ERROR,
-} from './httpCodes'
+} from '../utils/httpCodes'
 import {
   IMakeMessage,
   TInformational,
@@ -12,7 +12,7 @@ import {
   TRedirection,
   TClientError,
   TServerError,
-} from './types'
+} from '../types/makeResponse'
 
 /**
  * @function makeModelMessage

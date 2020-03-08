@@ -1,4 +1,4 @@
-import { IMakeErr, IError } from './types'
+import { IMakeErr, IError } from '../types/makeResponse'
 import makeModelMessage from './makeModelMessage'
 
 /**
