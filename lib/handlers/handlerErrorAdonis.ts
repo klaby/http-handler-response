@@ -1,4 +1,4 @@
-import { IAdonisErrorHandler } from '../types/errorHandler'
+import { IAdonisErrorHandler } from '../types/handlers'
 import defaultError from './defaultError'
 
 /**

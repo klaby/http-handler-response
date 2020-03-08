@@ -1,11 +1,11 @@
-import makeErr from '../builders/makeErr'
-import { IError } from '../types/makeResponse'
+import createError from '../builders/createError'
+import { IError } from '../types/builders'
 
 /**
  * Default Server error
  */
 
-const defaultError: IError = makeErr({
+const defaultError: IError = createError({
   code: '500',
   detail: 'There was an internal server error.',
 })

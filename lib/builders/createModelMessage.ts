@@ -6,23 +6,23 @@ import {
   SERVER_ERROR,
 } from '../utils/httpCodes'
 import {
-  IMakeMessage,
+  ICreateModelMessage,
   TInformational,
   TSuccess,
   TRedirection,
   TClientError,
   TServerError,
-} from '../types/makeResponse'
+} from '../types/builders'
 
 /**
- * @function makeModelMessage
+ * @function createModelMessage
  *
  * Assemble the default message header.
  *
  * @param code - HTTP status code 1xx to 5xx
  * @param title - Short and descriptive information
  */
-const makeModelMessage = ({ code, title }: IMakeMessage) => {
+const createModelMessage = ({ code, title }: ICreateModelMessage) => {
   const _code = Number(code)
   var _title
 
@@ -41,4 +41,4 @@ const makeModelMessage = ({ code, title }: IMakeMessage) => {
   return { title: _title, status: _code }
 }
 
-export default makeModelMessage
+export default createModelMessage

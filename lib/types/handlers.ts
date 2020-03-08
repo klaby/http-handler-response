@@ -1,5 +1,5 @@
-import { IError } from './makeResponse'
-import { IAdonisResponse, IExpressResponse, IKoaContext } from './ctxHttp'
+import { IError } from './builders'
+import { IAdonisResponse, IExpressResponse, IKoaContext } from './contextHttp'
 
 // Koa
 export interface IKoaErrorHandler {

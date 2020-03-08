@@ -1,8 +1,8 @@
-import makeRes from '../lib/makeRes'
+import createResponse from '../lib/builders/createResponse'
 
-describe('Make response', () => {
+describe('Create response', () => {
   it('Must mount a successful response with status code 201', () => {
-    const response = makeRes({
+    const response = createResponse({
       code: '201',
       message: 'Successfully registered',
       data: {
@@ -23,7 +23,7 @@ describe('Make response', () => {
   })
 
   it('You must assemble a response with a personalized title', () => {
-    const response = makeRes({
+    const response = createResponse({
       code: '201',
       title: 'Success',
       message: 'Successfully registered',

@@ -1,4 +1,4 @@
-import { IExpressErrorHandler } from '../types/errorHandler'
+import { IExpressErrorHandler } from '../types/handlers'
 import defaultError from './defaultError'
 
 /**

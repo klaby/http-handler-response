@@ -1,8 +1,8 @@
-import makeErr from '../lib/makeErr'
+import createError from '../lib/builders/createError'
 
-describe('Make error', () => {
+describe('Create error', () => {
   it('Must return a 401 error for a failed login attempt.', () => {
-    const error = makeErr({
+    const error = createError({
       code: '401',
       detail: 'Informed credentials are invalidated.',
       instance: '/auth/user',
@@ -19,7 +19,7 @@ describe('Make error', () => {
   })
 
   it('You must mount an error message with a custom title.', () => {
-    const error = makeErr({
+    const error = createError({
       code: '401',
       title: 'Credentials invalid',
       detail: 'Informed credentials are invalidated.',

@@ -1,4 +1,4 @@
-import { IKoaErrorHandler } from '../types/errorHandler'
+import { IKoaErrorHandler } from '../types/handlers'
 import defaultError from './defaultError'
 
 /**
