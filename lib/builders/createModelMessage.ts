@@ -23,22 +23,21 @@ import {
  * @param title - Short and descriptive information
  */
 const createModelMessage = ({ code, title }: ICreateModelMessage) => {
-  const _code = Number(code)
   var _title
 
-  if (_code >= 100 && _code < 200) {
+  if (code >= 100 && code < 200) {
     _title = INFORMATIONAL[code as TInformational]
-  } else if (_code >= 200 && _code < 300) {
+  } else if (code >= 200 && code < 300) {
     _title = SUCCESS[code as TSuccess]
-  } else if (_code >= 300 && _code < 400) {
+  } else if (code >= 300 && code < 400) {
     _title = REDIRECTION[code as TRedirection]
-  } else if (_code >= 400 && _code < 500) {
+  } else if (code >= 400 && code < 500) {
     _title = CLIENT_ERROR[code as TClientError]
   } else {
     _title = SERVER_ERROR[code as TServerError]
   }
 
-  return { title: title ?? _title, status: _code }
+  return { title: title ?? _title, status: code }
 }
 
 export default createModelMessage
