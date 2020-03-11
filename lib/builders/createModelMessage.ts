@@ -1,18 +1,5 @@
-import {
-  INFORMATIONAL,
-  SUCCESS,
-  REDIRECTION,
-  CLIENT_ERROR,
-  SERVER_ERROR,
-} from '../utils/httpCodes'
-import {
-  ICreateModelMessage,
-  TInformational,
-  TSuccess,
-  TRedirection,
-  TClientError,
-  TServerError,
-} from '../types/builders'
+import { ROOT_CODES } from '../types/httpCodes'
+import { ICreateModelMessage, IResponse, IError } from '../types/builders'
 
 /**
  * @function createModelMessage
@@ -22,23 +9,26 @@ import {
  * @param code - HTTP status code 1xx to 5xx
  * @param title - Short and descriptive information
  */
-const createModelMessage = ({ code, title }: ICreateModelMessage) => {
-  const _code = Number(code)
-  var _title
+const createModelMessage = ({
+  code,
+  title,
+}: ICreateModelMessage): IResponse | IError => {
+  var model = { title: '', status: 0 }
 
-  if (_code >= 100 && _code < 200) {
-    _title = INFORMATIONAL[code as TInformational]
-  } else if (_code >= 200 && _code < 300) {
-    _title = SUCCESS[code as TSuccess]
-  } else if (_code >= 300 && _code < 400) {
-    _title = REDIRECTION[code as TRedirection]
-  } else if (_code >= 400 && _code < 500) {
-    _title = CLIENT_ERROR[code as TClientError]
-  } else {
-    _title = SERVER_ERROR[code as TServerError]
-  }
+  Object.entries(ROOT_CODES).filter(([key]) => {
+    let _code = key.split(' - ')
 
-  return { title: title ?? _title, status: _code }
+    if (Number(_code[0]) === code) {
+      return (model = {
+        status: Number(_code[0]),
+        title: title ?? _code[1],
+      })
+    }
+
+    return
+  })
+
+  return model
 }
 
 export default createModelMessage
