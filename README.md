@@ -19,7 +19,7 @@
 
 ## Using
 
-The http-handler-response provides two main functions. `createError` and `createResponse`.
+The http-handler-response provides three main functions. `createError`, `createresponse` and `handlerError`.
 
 ### createError
 
@@ -28,11 +28,23 @@ The `createError` function is the function responsible for formulating your retu
 #### Parameters
 
 ```js
-  code: number
+  // HTTP status code 4xx to 5xx
+  code: number,
+
+  // URL for a document describing the error condition
   type: string,
+
+  // Short and descriptive information
   title: string,
+
+  // Legible error description
   detail: string,
+
+  // URI exclusive for or specific error
   instance: string,
+
+  // HTTP Code Reference
+  ref: string,
 ```
 
 #### Example
@@ -50,7 +62,7 @@ class UserController {
         createError({
           code: 404,
           detail: 'The user informed is not registered.',
-          instance: '/user/1',
+          instance: '/users/1',
           type: 'https://example.com/docs/users',
         })
 
@@ -69,7 +81,7 @@ class UserController {
   status: 404,
   title: 'Not found',
   detail: 'The user informed is not registered.',
-  instance: '/user/1',
+  instance: '/users/1',
   type: 'https://example.com/docs/users',
 }
 
@@ -82,10 +94,20 @@ The `createResponse` function is the function responsible for formulating your r
 #### Parameters
 
 ```js
+  //  HTTP status code 1xx to 3xx
   code: number,
+
+  // Legible action response
   message: string,
+
+  // Short and descriptive information
   title: string
+
+  // Back Data
   data: array | object
+
+  // HTTP Code Reference
+  ref: string
 ```
 
 #### Example
@@ -127,8 +149,8 @@ class UserController {
   message: 'Successful registered user.'
   data: {
     id: 1,
-    name: 'Foo',
-    email: 'foo@email.com'
+    name: 'User',
+    email: 'user@email.com'
   }
 }
 

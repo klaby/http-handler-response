@@ -13,7 +13,7 @@ const createModelMessage = ({
   code,
   title,
 }: ICreateModelMessage): IResponse | IError => {
-  var model = { title: 'Internal Server Error', status: 500 }
+  var model = { title: '', status: 0 }
 
   Object.entries(ROOT_CODES).filter(([key]) => {
     let _code = key.split(' - ')
