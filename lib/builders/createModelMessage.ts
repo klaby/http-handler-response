@@ -1,4 +1,4 @@
-import { ROOT_CODES } from '../types/httpCodes'
+import { HTTP_CODES } from '../types/httpCodes'
 import { ICreateModelMessage, IResponse, IError } from '../types/builders'
 
 /**
@@ -15,13 +15,11 @@ const createModelMessage = ({
 }: ICreateModelMessage): IResponse | IError => {
   var model = { title: '', status: 0 }
 
-  Object.entries(ROOT_CODES).filter(([key]) => {
-    let _code = key.split(' - ')
-
-    if (Number(_code[0]) === code) {
+  Object.entries(HTTP_CODES).filter(([_code, _title]) => {
+    if (Number(_code) === code) {
       return (model = {
-        status: Number(_code[0]),
-        title: title ?? _code[1],
+        status: Number(_code),
+        title: title ?? _title.split(' - ')[1],
       })
     }
 

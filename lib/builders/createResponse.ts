@@ -14,8 +14,8 @@ import createModelMessage from './createModelMessage'
  */
 const createResponse = ({
   code = 200,
-  data,
   message,
+  data,
   title,
 }: ICreateResponse): IResponse =>
   Object.assign(createModelMessage({ code, title }), { data, message })
