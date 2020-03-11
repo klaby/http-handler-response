@@ -15,8 +15,8 @@ import makeModelMessage from './createModelMessage'
  */
 const createError = ({
   code = 500,
-  type = 'about:blank',
   title,
+  type = 'about:blank',
   detail,
   instance,
 }: ICreateError): IError =>

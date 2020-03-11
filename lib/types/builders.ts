@@ -1,37 +1,27 @@
 import {
-  TInformational,
-  TSuccess,
-  TRedirection,
-  TClientError,
-  TServerError,
-  TInformationalCode,
-  TSuccessCode,
-  TRedirectionCode,
-  TClientErrorCode,
-  TServerErrorCode,
+  TRootCode,
+  TRootResponse,
+  TRootResponseCode,
+  TRootError,
+  TRootErrorCode,
 } from './httpCodes'
 
 export interface ICreateModelMessage {
-  code:
-    | TInformationalCode
-    | TSuccessCode
-    | TRedirectionCode
-    | TClientErrorCode
-    | TServerErrorCode
+  code: TRootCode
   title?: string
 }
 
 export interface ICreateResponse {
-  code: TInformationalCode | TSuccessCode | TRedirectionCode
-  ref?: TInformational | TSuccess | TRedirection
+  code: TRootResponseCode
+  ref?: TRootResponse
   message?: string
   title?: string
   data?: [] | object
 }
 
 export interface ICreateError {
-  code: TClientErrorCode | TServerErrorCode
-  ref?: TClientError | TServerError
+  code: TRootErrorCode
+  ref?: TRootError
   detail: string
   title?: string
   type?: string
