@@ -7,12 +7,13 @@ import createModelMessage from './createModelMessage'
  * Simple model for successful responses.
  *
  * @param code - HTTP status code 1xx to 3xx
+ * @param ref - HTTP Code Reference
  * @param message - Legible action response
  * @param data - Back Data
  * @param title - Short and descriptive information
  */
 const createResponse = ({
-  code,
+  code = 200,
   data,
   message,
   title,

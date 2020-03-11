@@ -6,7 +6,7 @@ import { IError } from '../types/builders'
  */
 
 const defaultError: IError = createError({
-  code: '500',
+  code: 500,
   detail: 'There was an internal server error.',
 })
 
