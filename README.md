@@ -59,7 +59,7 @@ class UserController {
       const user = await User.find(1)
 
       if (!user)
-        throw createError({
+        createError({
           code: 404,
           detail: 'The user informed is not registered.',
           instance: '/users/1',
