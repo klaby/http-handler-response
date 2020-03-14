@@ -136,7 +136,7 @@ export interface IModelMessage {
 }
 
 export interface ICreateResponse {
-  code: number
+  code: TRootResponseCode
   ref?: TRootResponse
   message?: string
   title?: string
@@ -144,7 +144,7 @@ export interface ICreateResponse {
 }
 
 export interface ICreateError {
-  code: number
+  code: TRootErrorCode
   ref?: TRootError
   detail: string
   title?: string
