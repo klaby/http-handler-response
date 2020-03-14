@@ -170,7 +170,7 @@ export interface IRootResponse {
   status?: number | Function
   json?: Function
   body?: object
-  type?: string
+  type?: any
 }
 
 export interface ISchemeError {
