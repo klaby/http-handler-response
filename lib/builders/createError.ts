@@ -1,4 +1,4 @@
-import { ICreateError, IError } from '../types/builders'
+import { ICreateError } from '../types'
 import makeModelMessage from './createModelMessage'
 
 /**
@@ -19,7 +19,12 @@ const createError = ({
   type = 'about:blank',
   detail,
   instance,
-}: ICreateError): IError =>
-  Object.assign(makeModelMessage({ code, title }), { type, detail, instance })
+}: ICreateError): never => {
+  throw Object.assign(makeModelMessage({ code, title }), {
+    type,
+    detail,
+    instance,
+  })
+}
 
 export default createError

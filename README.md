@@ -50,7 +50,7 @@ The `createError` function is the function responsible for formulating your retu
 #### Example
 
 ```js
-import { createError, handlerErrorAdonis } from 'http-handler-response'
+import { createError, handlerError } from 'http-handler-response'
 import User from 'models/User'
 
 class UserController {
@@ -68,7 +68,7 @@ class UserController {
 
       return user
     } catch (error) {
-      handlerErrorAdonis({ response, error })
+      handlerError(response, error)
     }
   }
 }
@@ -113,7 +113,7 @@ The `createResponse` function is the function responsible for formulating your r
 #### Example
 
 ```js
-import { createResponse, handlerErrorAdonis } from 'http-handler-response'
+import { createResponse, handlerError } from 'http-handler-response'
 import User from 'models/User'
 
 class UserController {
@@ -134,7 +134,7 @@ class UserController {
         }),
       )
     } catch (error) {
-      handlerErrorAdonis({ response, error })
+      handlerError(response, error)
     }
   }
 }
@@ -158,37 +158,12 @@ class UserController {
 
 ### handlerError
 
-The http-handler-response has custom handlers for handling errors for various web frameworks such as `AdonisJs`, `Express` and `KoaJs`. The functions have a default prefix `handlerError` followed by the name of the framework . Ex: `handlerErrorExpress`.
-
-#### Parameters
-
-Some parameters vary in nomenclature, depending on the framework. The idea is to avoid desessentiary statements like `{ response: res }` to simply `{ res }`.
-
-##### AdonisJs
-
-```js
-  response: Response,
-  error: Error,
-```
-
-##### Express
-
-```js
-  res: Response,
-  error: Error,
-```
-
-##### KoaJs
-
-```js
-  ctx: Context,
-  error: Error,
-```
+The http-handler-response has custom handlers for handling errors for various web frameworks such as `AdonisJs`, `Express` and `KoaJs`.
 
 #### Example
 
 ```js
-import { handlerErrorAdonis } from 'http-handler-response'
+import { handlerError } from 'http-handler-response'
 import User from 'models/User'
 
 class UserController {
@@ -196,7 +171,7 @@ class UserController {
     try {
       // Your code..
     } catch (error) {
-      handlerErrorAdonis({ response, error })
+      handlerError(response, error)
     }
   }
 }

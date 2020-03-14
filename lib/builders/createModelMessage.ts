@@ -1,5 +1,5 @@
-import { HTTP_CODES } from '../types/httpCodes'
-import { ICreateModelMessage, IResponse, IError } from '../types/builders'
+import { HTTP_CODES } from '../types'
+import { ICreateModelMessage, IModelMessage } from '../types'
 
 /**
  * @function createModelMessage
@@ -12,7 +12,7 @@ import { ICreateModelMessage, IResponse, IError } from '../types/builders'
 const createModelMessage = ({
   code,
   title,
-}: ICreateModelMessage): IResponse | IError => {
+}: ICreateModelMessage): IModelMessage => {
   var model = { title: '', status: 0 }
 
   Object.entries(HTTP_CODES).filter(([_code, _title]) => {
