@@ -1,4 +1,4 @@
-import { ICreateError, IError } from '../types/builders'
+import { ICreateError, IError } from '../types'
 import makeModelMessage from './createModelMessage'
 
 /**

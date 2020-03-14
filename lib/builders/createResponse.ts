@@ -1,4 +1,4 @@
-import { ICreateResponse, IResponse } from '../types/builders'
+import { ICreateResponse, IResponse } from '../types'
 import createModelMessage from './createModelMessage'
 
 /**

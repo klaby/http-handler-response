@@ -1,3 +1,6 @@
+/**
+ * H T T P
+ */
 // 1xx
 export const INFORMATIONAL = {
   100: '100 - Continue',
@@ -117,4 +120,59 @@ export const HTTP_CODES = {
   ...REDIRECTION,
   ...CLIENT_ERROR,
   ...SERVER_ERROR,
+}
+
+/**
+ * B U I L D E R S
+ */
+export interface ICreateModelMessage {
+  code: number
+  title?: string
+}
+
+export interface IModelMessage {
+  status: number
+  title: string
+}
+
+export interface ICreateResponse {
+  code: number
+  ref?: TRootResponse
+  message?: string
+  title?: string
+  data?: [] | object
+}
+
+export interface ICreateError {
+  code: number
+  ref?: TRootError
+  detail: string
+  title?: string
+  type?: string
+  instance?: string
+}
+
+export interface IResponse extends IModelMessage {
+  message?: string
+  data?: [] | object
+}
+
+export interface IError extends IModelMessage {
+  detail: string
+  type?: string
+  instance?: string
+}
+
+/**
+ * H A N D L E R S
+ */
+export interface IRootResponse {
+  status?: number | Function
+  json?: Function
+  body?: object
+  type?: string
+}
+
+export interface ISchemeError {
+  error: IError
 }
