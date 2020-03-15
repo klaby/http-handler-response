@@ -1,4 +1,4 @@
-import createResponse from '../lib/builders/createResponse'
+import { createResponse } from '../lib/builder'
 
 describe('Create response', () => {
   it('Must mount a successful response with status code 201', () => {

@@ -152,12 +152,12 @@ export interface ICreateError {
   instance?: string
 }
 
-export interface IResponse extends IModelMessage {
+export interface IModelResponse extends IModelMessage {
   message?: string
   data?: [] | object
 }
 
-export interface IError extends IModelMessage {
+export interface IModelError extends IModelMessage {
   detail: string
   type?: string
   instance?: string
@@ -166,13 +166,14 @@ export interface IError extends IModelMessage {
 /**
  * H A N D L E R S
  */
-export interface IRootResponse {
-  status?: number | Function
-  json?: Function
-  body?: object
-  type?: any
+export interface IHandler {
+  response: IResponse
+  json: IModelResponse | IModelError
 }
-
-export interface ISchemeError {
-  error: IError
+export interface IResponse {
+  status: Function | number | any
+  json?: Function | object | any
+  body?: object | any
+  type?: any
+  send: Function | any
 }

@@ -1,4 +1,4 @@
-import createError from '../lib/builders/createError'
+import { createError } from '../lib/builder'
 
 describe('Create error', () => {
   it('Must return a 401 error for a failed login attempt.', () => {
