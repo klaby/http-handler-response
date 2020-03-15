@@ -1,8 +1,12 @@
 <div align="center">
-  <h1> ... http-handler-response ... </h1>
+  <h1>http-handler-response</h1>
   <sub>Built with ❤︎ by
   <a href="https://github.com/hiukky">Hiukky</a>
   <br><br>
+    <img src="https://img.shields.io/github/stars/hiukky/http-handler-response?style=flat-square">
+    <img src="https://img.shields.io/github/issues/hiukky/http-handler-response?style=flat-square">
+    <img src="https://img.shields.io/github/stars/hiukky/http-handler-response?style=flat-square">
+    <img src="https://img.shields.io/github/forks/hiukky/http-handler-response?style=flat-square">
 </div>
 
   <h3 align="center">A simple handler to standardize and handle HTTP request errors and responses in APIs.</h3>
@@ -11,7 +15,7 @@
 
 ```sh
   # Using NPM
-  npm install http-handler-response --save
+  npm i http-handler-response
 
   # Using YARN
   yarn add http-handler-response
