@@ -24,6 +24,9 @@ const validator = (response: IResponse) => ({
     exist: response.status && response.send,
     isFunc: typeof response.send === 'function',
   },
+  app: {
+    exist: response.app,
+  },
 })
 
 /**
@@ -43,7 +46,7 @@ const handler = ({ response, json }: IHandler) => {
 
     if (validation.json.exist) {
       validation.json.isFunc ? response.json(json) : (response.json = json)
-    } else if (validation.body.exist) {
+    } else if (validation.app.exist) {
       response.type = 'json'
       validation.body.isFunc ? response.body(json) : (response.body = json)
     } else {

@@ -176,4 +176,5 @@ export interface IResponse {
   body?: object | any
   type?: any
   send: Function | any
+  app?: any
 }
