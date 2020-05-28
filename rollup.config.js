@@ -12,21 +12,29 @@ export default {
       file: pkg.main,
       format: 'cjs',
       exports: 'named',
-      sourcemap: false,
+      sourcemap: true,
     },
     {
       file: pkg.module,
       format: 'es',
       exports: 'named',
-      sourcemap: false,
+      sourcemap: true,
     },
   ],
   plugins: [
     external(),
     resolve(),
     typescript({
+      typescript: require('typescript'),
       rollupCommonJSResolveHack: true,
-      exclude: '**/__tests__/**',
+      useTsconfigDeclarationDir: true,
+      tsconfigOverride: {
+        compilerOptions: {
+          declarationDir: './typings',
+          declarationMap: true,
+        },
+      },
+      exclude: '**/tests/**',
       clean: true,
     }),
     commonjs({
