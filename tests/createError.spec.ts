@@ -43,7 +43,7 @@ describe('Create error', () => {
   it('Must create a type 500 error using codeText', () => {
     try {
       createError({
-        codeText: '500 - Internal Server Error',
+        code: '500 - Internal Server Error',
         title: 'Internal Server Error',
         detail: 'There was an internal problem on the server.',
         instance: '/auth/user',
@@ -63,7 +63,7 @@ describe('Create error', () => {
   it('Must create a type 500 error using codeText and a custom title.', () => {
     try {
       createError({
-        codeText: '500 - Internal Server Error',
+        code: '500 - Internal Server Error',
         title: 'Server Error',
         detail: 'There was an internal problem on the server.',
         instance: '/auth/user',

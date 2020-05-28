@@ -126,8 +126,7 @@ export const HTTP_CODES = {
  * B U I L D E R S
  */
 export interface ICreateModelMessage {
-  code?: number
-  codeText?: string
+  code: number | string
   title?: string
 }
 
@@ -137,16 +136,14 @@ export interface IModelMessage {
 }
 
 export interface ICreateResponse {
-  code?: TRootResponseCode
-  codeText?: TRootResponse
+  code: TRootResponse | TRootResponseCode
   message?: string
   title?: string
   data?: [] | object
 }
 
 export interface ICreateError {
-  code?: TRootErrorCode
-  codeText?: TRootError
+  code: TRootError | TRootErrorCode
   detail: string
   title?: string
   type?: string

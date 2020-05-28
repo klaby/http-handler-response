@@ -24,7 +24,7 @@ describe('handler Error', () => {
 
     try {
       createError({
-        codeText: '400 - Bad Request',
+        code: '400 - Bad Request',
         detail: 'Incorrect Socilicitation.',
       })
     } catch (error) {
