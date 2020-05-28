@@ -31,10 +31,11 @@ export const createError = ({
  *
  * Simple model for successful responses.
  *
- * @param code - HTTP status code 1xx to 3xx
- * @param message - Legible action response
- * @param data - Back Data
- * @param title - Short and descriptive information
+ * @param response - HTTP Response Object
+ * @param payload.code - HTTP status code 1xx to 3xx
+ * @param payload.message - Legible action response
+ * @param payload.data - Back Data
+ * @param payload.title - Short and descriptive information
  */
 export const createResponse = (
   response: IResponse,

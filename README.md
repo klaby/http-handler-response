@@ -32,23 +32,14 @@ The `createError` function is the function responsible for formulating your retu
 #### Parameters
 
 ```js
-  // HTTP status code 4xx to 5xx
-  code: number,
-
-  // URL for a document describing the error condition
-  type: string,
-
-  // Short and descriptive information
-  title: string,
-
-  // Legible error description
-  detail: string,
-
-  // URI exclusive for or specific error
-  instance: string,
-
-  // HTTP Code Reference
-  ref: string,
+  // Object with response specifications
+  payload: {
+    code: number | string,   // HTTP status code 4xx to 5xx
+    type: string,            // URL for a document describing the error condition
+    title: string,           // Short and descriptive information
+    detail: string,          // Legible error description
+    instance: string,        // URI exclusive for or specific error
+  }
 ```
 
 #### Example
@@ -64,7 +55,7 @@ class UserController {
 
       if (!user)
         createError({
-          code: 404,
+          code: 404, // 404 or '404 - Not Found'
           detail: 'The user informed is not registered.',
           instance: '/users/1',
           type: 'https://example.com/docs/users',
@@ -98,20 +89,17 @@ The `createResponse` function is the function responsible for formulating your r
 #### Parameters
 
 ```js
-  //  HTTP status code 1xx to 3xx
-  code: number,
+  // HTTP Response Object
+  response: object
 
-  // Legible action response
-  message: string,
-
-  // Short and descriptive information
-  title: string
-
-  // Back Data
-  data: array | object
-
-  // HTTP Code Reference
-  ref: string
+  // Object with response specifications
+  payload: {
+    code: number | string,   // HTTP status code 1xx to 3xx
+    title: string,           // Short and descriptive information
+    message: string,         // Legible action response
+    instance: string,        // URI exclusive for or specific error
+    data: object             // Back Data
+  }
 ```
 
 #### Example
@@ -130,13 +118,11 @@ class UserController {
       user.email = data.email
       await user.save()
 
-      return response.status(201).send(
-        createResponse({
-          code: 201,
-          message: 'Successful registered user.',
-          data: user,
-        }),
-      )
+      return createResponse(response, {
+        code: 201, // 201 or '201 - Created'
+        message: 'Successful registered user.',
+        data: user,
+      }),
     } catch (error) {
       handlerError(response, error)
     }
@@ -157,7 +143,6 @@ class UserController {
     email: 'user@email.com'
   }
 }
-
 ```
 
 ### handlerError

@@ -152,7 +152,7 @@ export interface ICreateError {
 
 export interface IModelResponse extends IModelMessage {
   message?: string
-  data?: [] | object
+  data?: object
 }
 
 export interface IModelError extends IModelMessage {
