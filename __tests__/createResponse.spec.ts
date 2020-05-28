@@ -1,12 +1,12 @@
 import mocks from 'node-mocks-http'
 
-import { handlerResponse } from '../lib/builder'
+import { createResponse } from '../lib/builder'
 
 describe('Create response', () => {
   it('Must mount a successful response with status code 201', () => {
     const Response = mocks.createResponse()
 
-    const response = handlerResponse(Response, {
+    const response = createResponse(Response, {
       code: 201,
       message: 'Successfully registered',
       data: {
@@ -29,7 +29,7 @@ describe('Create response', () => {
   it('You must assemble a response with a personalized title', () => {
     const Response = mocks.createResponse()
 
-    const response = handlerResponse(Response, {
+    const response = createResponse(Response, {
       code: 201,
       title: 'Success',
       message: 'Successfully registered',

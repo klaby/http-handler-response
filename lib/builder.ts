@@ -28,7 +28,7 @@ export const createError = ({
 }
 
 /**
- * @function handlerResponse
+ * @function createResponse
  *
  * Simple model for successful responses.
  *
@@ -38,7 +38,7 @@ export const createError = ({
  * @param data - Back Data
  * @param title - Short and descriptive information
  */
-export const handlerResponse = (
+export const createResponse = (
   response: IResponse,
   { code = 200, message, data, title }: ICreateResponse,
 ) =>
