@@ -16,7 +16,7 @@ const createModelMessage = ({
   var model = { title: '', status: 0 }
 
   Object.entries(HTTP_CODES).filter(([_code, _title]) => {
-    if (Number(_code) === code) {
+    if (Number(_code) === code || code === _title) {
       return (model = {
         status: Number(_code),
         title: title ?? _title.split(' - ')[1],

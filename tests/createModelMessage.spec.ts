@@ -1,4 +1,4 @@
-import createModelMessage from '../lib/builders/createModelMessage'
+import { createModelMessage } from '../lib/core'
 
 describe('Create message model', () => {
   it('Must mount a base header with status 500 and title Internal Server Error', () => {

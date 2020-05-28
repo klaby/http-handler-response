@@ -126,7 +126,7 @@ export const HTTP_CODES = {
  * B U I L D E R S
  */
 export interface ICreateModelMessage {
-  code: number
+  code: number | string
   title?: string
 }
 
@@ -136,28 +136,26 @@ export interface IModelMessage {
 }
 
 export interface ICreateResponse {
-  code: TRootResponseCode
-  ref?: TRootResponse
+  code: TRootResponse | TRootResponseCode
   message?: string
   title?: string
   data?: [] | object
 }
 
 export interface ICreateError {
-  code: TRootErrorCode
-  ref?: TRootError
+  code: TRootError | TRootErrorCode
   detail: string
   title?: string
   type?: string
   instance?: string
 }
 
-export interface IResponse extends IModelMessage {
+export interface IModelResponse extends IModelMessage {
   message?: string
-  data?: [] | object
+  data?: object
 }
 
-export interface IError extends IModelMessage {
+export interface IModelError extends IModelMessage {
   detail: string
   type?: string
   instance?: string
@@ -166,13 +164,15 @@ export interface IError extends IModelMessage {
 /**
  * H A N D L E R S
  */
-export interface IRootResponse {
-  status?: number | Function
-  json?: Function
-  body?: object
-  type?: any
+export interface IHandler {
+  response: IResponse
+  json: IModelResponse | IModelError
 }
-
-export interface ISchemeError {
-  error: IError
+export interface IResponse {
+  status: any
+  json?: any
+  body?: any
+  type?: any
+  send: any
+  app?: any
 }

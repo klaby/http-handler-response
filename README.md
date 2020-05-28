@@ -1,8 +1,12 @@
 <div align="center">
-  <h1> ... http-handler-response ... </h1>
+  <h1>http-handler-response</h1>
   <sub>Built with ❤︎ by
   <a href="https://github.com/hiukky">Hiukky</a>
   <br><br>
+    <img src="https://img.shields.io/github/license/hiukky/http-handler-response?style=flat-square">
+    <img src="https://img.shields.io/github/stars/hiukky/http-handler-response?style=flat-square">
+    <img src="https://img.shields.io/github/forks/hiukky/http-handler-response?style=flat-square">
+    <img src="https://img.shields.io/github/issues/hiukky/http-handler-response?style=flat-square">
 </div>
 
   <h3 align="center">A simple handler to standardize and handle HTTP request errors and responses in APIs.</h3>
@@ -11,7 +15,7 @@
 
 ```sh
   # Using NPM
-  npm install http-handler-response --save
+  npm i http-handler-response
 
   # Using YARN
   yarn add http-handler-response
@@ -28,23 +32,14 @@ The `createError` function is the function responsible for formulating your retu
 #### Parameters
 
 ```js
-  // HTTP status code 4xx to 5xx
-  code: number,
-
-  // URL for a document describing the error condition
-  type: string,
-
-  // Short and descriptive information
-  title: string,
-
-  // Legible error description
-  detail: string,
-
-  // URI exclusive for or specific error
-  instance: string,
-
-  // HTTP Code Reference
-  ref: string,
+  // Object with response specifications
+  payload: {
+    code: number | string,   // HTTP status code 4xx to 5xx
+    type: string,            // URL for a document describing the error condition
+    title: string,           // Short and descriptive information
+    detail: string,          // Legible error description
+    instance: string,        // URI exclusive for or specific error
+  }
 ```
 
 #### Example
@@ -60,7 +55,7 @@ class UserController {
 
       if (!user)
         createError({
-          code: 404,
+          code: 404, // 404 or '404 - Not Found'
           detail: 'The user informed is not registered.',
           instance: '/users/1',
           type: 'https://example.com/docs/users',
@@ -94,20 +89,17 @@ The `createResponse` function is the function responsible for formulating your r
 #### Parameters
 
 ```js
-  //  HTTP status code 1xx to 3xx
-  code: number,
+  // HTTP Response Object
+  response: object
 
-  // Legible action response
-  message: string,
-
-  // Short and descriptive information
-  title: string
-
-  // Back Data
-  data: array | object
-
-  // HTTP Code Reference
-  ref: string
+  // Object with response specifications
+  payload: {
+    code: number | string,   // HTTP status code 1xx to 3xx
+    title: string,           // Short and descriptive information
+    message: string,         // Legible action response
+    instance: string,        // URI exclusive for or specific error
+    data: object             // Back Data
+  }
 ```
 
 #### Example
@@ -126,13 +118,11 @@ class UserController {
       user.email = data.email
       await user.save()
 
-      return response.status(201).send(
-        createResponse({
-          code: 201,
-          message: 'Successful registered user.',
-          data: user,
-        }),
-      )
+      return createResponse(response, {
+        code: 201, // 201 or '201 - Created'
+        message: 'Successful registered user.',
+        data: user,
+      }),
     } catch (error) {
       handlerError(response, error)
     }
@@ -153,7 +143,6 @@ class UserController {
     email: 'user@email.com'
   }
 }
-
 ```
 
 ### handlerError

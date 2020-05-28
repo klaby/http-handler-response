@@ -1,17 +1,21 @@
-import createResponse from '../lib/builders/createResponse'
+import mocks from 'node-mocks-http'
+
+import { createResponse } from '../lib/builder'
 
 describe('Create response', () => {
   it('Must mount a successful response with status code 201', () => {
-    const response = createResponse({
+    const Response = mocks.createResponse()
+
+    const response = createResponse(Response, {
       code: 201,
       message: 'Successfully registered',
       data: {
         id: 1,
         name: 'Foo',
       },
-    })
+    }) as any
 
-    expect(response).toEqual({
+    expect(response._getJSONData()).toEqual({
       status: 201,
       title: 'Created',
       message: 'Successfully registered',
@@ -23,7 +27,9 @@ describe('Create response', () => {
   })
 
   it('You must assemble a response with a personalized title', () => {
-    const response = createResponse({
+    const Response = mocks.createResponse()
+
+    const response = createResponse(Response, {
       code: 201,
       title: 'Success',
       message: 'Successfully registered',
@@ -31,9 +37,9 @@ describe('Create response', () => {
         id: 1,
         name: 'Foo',
       },
-    })
+    }) as any
 
-    expect(response).toEqual({
+    expect(response._getJSONData()).toEqual({
       status: 201,
       title: 'Success',
       message: 'Successfully registered',
