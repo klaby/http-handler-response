@@ -1,6 +1,6 @@
 {
   "name": "http-handler-response",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "main": "dist/lib/index.js",
   "module": "dist/lib/index.es.js",
   "jsnext:main": "dist/lib/index.es.js",
@@ -36,7 +36,7 @@
     "jest": "^26.0.1",
     "node-mocks-http": "^1.8.1",
     "prettier": "^2.0.5",
-    "rollup": "^2.11.0",
+    "rollup": "^2.11.2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^9.0.0",
     "rollup-plugin-gzip": "^2.5.0",
@@ -52,6 +52,7 @@
     "typings"
   ],
   "keywords": [
+    "api",
     "http",
     "error",
     "http-response",
