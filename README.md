@@ -1,13 +1,27 @@
-<div align="center">
-  <h1>http-handler-response</h1>
-  <sub>Built with ❤︎ by
-  <a href="https://github.com/hiukky">Hiukky</a>
-  <br><br>
-    <img src="https://img.shields.io/github/license/hiukky/http-handler-response?style=flat-square">
-    <img src="https://img.shields.io/github/stars/hiukky/http-handler-response?style=flat-square">
-    <img src="https://img.shields.io/github/forks/hiukky/http-handler-response?style=flat-square">
-    <img src="https://img.shields.io/github/issues/hiukky/http-handler-response?style=flat-square">
-</div>
+<h1 align="center">http-handler-response</h1>
+
+<p align="center">
+  <a href="https://github.com/hiukky/http-handler-response/blob/master/LICENSE">
+    <img alt="GitHub license" src="https://img.shields.io/github/license/hiukky/http-handler-response?color=%236BF178&style=flat-square" />
+  </a>
+    <a href="https://www.npmjs.com/package/http-handler-response">
+    <img alt="npm" src="https://img.shields.io/npm/dt/http-handler-response?color=%2300CECB&style=flat-square" />
+  </a>
+  <a href="https://github.com/hiukky/http-handler-response/stargazers">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/hiukky/http-handler-response?color=%23a29bfe&style=flat-square" />
+  </a>
+  <a href="https://github.com/hiukky/http-handler-response/network">
+    <img alt="GitHub forks" src="https://img.shields.io/github/forks/hiukky/http-handler-response?color=%23ff595e&style=flat-square" />
+  </a>
+  <a href="https://github.com/hiukky/http-handler-response/issues">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/hiukky/http-handler-response?color=%23eab464&style=flat-square" />
+  </a>
+</p>
+
+<p align="center">
+  <sub>Built with ❤︎ by <a href="https://hiukky.com">Hiukky</a>
+  <br/>
+</p>
 
   <h3 align="center">A simple handler to standardize and handle HTTP request errors and responses in APIs.</h3>
 
