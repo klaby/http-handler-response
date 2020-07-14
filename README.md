@@ -1,4 +1,4 @@
- <h1 align="center">http-handler-response</h1>
+<h1 align="center">http-handler-response</h1>
 
 <p align="center">
   <a href="https://github.com/hiukky/http-handler-response/blob/master/LICENSE">
