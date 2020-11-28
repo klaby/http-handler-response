@@ -1,2 +1,2 @@
-export { default as createModelMessage } from './createModelMessage'
-export { default as handler } from './handler'
+export * from './createModelMessage'
+export * from './handler'

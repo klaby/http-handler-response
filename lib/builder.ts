@@ -4,7 +4,7 @@ import { ICreateError, ICreateResponse, IResponse, IModelError } from './types'
 /**
  * @function createError
  *
- * Creates an error response following the RFC 7807 pattern.
+ * @desc Creates an error response following the RFC 7807 pattern.
  *
  * @param code - HTTP status code 4xx to 5xx
  * @param type - URL for a document describing the error condition
@@ -29,7 +29,7 @@ export const createError = ({
 /**
  * @function createResponse
  *
- * Simple model for successful responses.
+ * @desc Simple model for successful responses.
  *
  * @param response - HTTP Response Object
  * @param payload.code - HTTP status code 1xx to 3xx
@@ -52,7 +52,7 @@ export const createResponse = (
 /**
  * @function handlerError
  *
- * Error handler
+ * @desc Error handler.
  *
  * @param response - Response object instance
  * @param error - Error object instance
