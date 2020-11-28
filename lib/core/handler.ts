@@ -3,7 +3,7 @@ import { IHandler, IResponse } from '../types'
 /**
  * @function responseValidator
  *
- * HTTP Response Instance Validator
+ * @desc HTTP Response Instance Validator.
  *
  * @param response
  */
@@ -32,9 +32,11 @@ const validator = (response: IResponse) => ({
 /**
  * @function handler
  *
+ * @desc Handling error for different response instances.
+ *
  * @param response
  */
-const handler = ({ response, json }: IHandler) => {
+export const handler = ({ response, json }: IHandler) => {
   try {
     const validation = validator(response)
 
@@ -54,9 +56,7 @@ const handler = ({ response, json }: IHandler) => {
     }
 
     return response
-  } catch (error) {
+  } catch {
     throw new Error('The informed Response instance is not a valid model.')
   }
 }
-
-export default handler
