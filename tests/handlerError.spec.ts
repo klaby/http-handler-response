@@ -1,6 +1,6 @@
 import mocks from 'node-mocks-http'
 
-import { handlerError, createError } from '../lib/builder'
+import { handlerError, createException } from '../lib/builder'
 
 describe('handler Error', () => {
   it('Must return a standard answer with error 500 for an untreated error.', () => {
@@ -23,7 +23,7 @@ describe('handler Error', () => {
     const Response = mocks.createResponse()
 
     try {
-      createError({
+      createException({
         code: '400 - Bad Request',
         detail: 'Incorrect Socilicitation.',
       })

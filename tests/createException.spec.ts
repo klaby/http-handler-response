@@ -1,9 +1,9 @@
-import { createError } from '../lib/builder'
+import { createException } from '../lib/builder'
 
 describe('Create error', () => {
   it('Must return a 401 error for a failed login attempt.', () => {
     try {
-      createError({
+      createException({
         code: 401,
         detail: 'Informed credentials are invalidated.',
         instance: '/auth/user',
@@ -22,7 +22,7 @@ describe('Create error', () => {
 
   it('You must mount an error message with a custom title.', () => {
     try {
-      createError({
+      createException({
         code: 401,
         title: 'Credentials invalid',
         detail: 'Informed credentials are invalidated.',
@@ -42,7 +42,7 @@ describe('Create error', () => {
 
   it('Must create a type 500 error using codeText', () => {
     try {
-      createError({
+      createException({
         code: '500 - Internal Server Error',
         title: 'Internal Server Error',
         detail: 'There was an internal problem on the server.',
@@ -62,7 +62,7 @@ describe('Create error', () => {
 
   it('Must create a type 500 error using codeText and a custom title.', () => {
     try {
-      createError({
+      createException({
         code: '500 - Internal Server Error',
         title: 'Server Error',
         detail: 'There was an internal problem on the server.',

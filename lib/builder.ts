@@ -1,8 +1,13 @@
 import { createModelMessage, handler } from './core'
-import { ICreateError, ICreateResponse, IResponse, IModelError } from './types'
+import {
+  ICreateException,
+  ICreateResponse,
+  IResponse,
+  IModelError,
+} from './types'
 
 /**
- * @function createError
+ * @function createException
  *
  * @desc Creates an error response following the RFC 7807 pattern.
  *
@@ -12,13 +17,13 @@ import { ICreateError, ICreateResponse, IResponse, IModelError } from './types'
  * @param instance - URI exclusive for or specific error
  * @param title - Short and descriptive information
  */
-export const createError = ({
+export const createException = ({
   code,
   title,
   type = 'about:blank',
   detail,
   instance,
-}: ICreateError): never => {
+}: ICreateException): never => {
   throw Object.assign(createModelMessage({ code, title }), {
     type,
     detail,

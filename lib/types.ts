@@ -59,7 +59,7 @@ export interface ICreateResponse {
   data?: [] | object
 }
 
-export interface ICreateError {
+export interface ICreateException {
   code: TRootError | TRootErrorCode
   detail: string
   title?: string
